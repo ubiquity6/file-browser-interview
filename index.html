@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Browser</title>
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+  <style>
+    body {
+      padding-bottom: 200px;
+    }
+
+    td {
+      padding-bottom: 16px;
+    }
+
+    code {
+      background: #eee;
+      padding: 4px 8px;
+    }
+
+    .container {
+      margin: 0 auto;
+      width: 640px;
+    }
+
+    .header {
+      font-weight: bold;
+      padding-right: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>File Browser</h1>
+
+<h3>Overview</h3>
+
+<p>The goal of this coding challenge is to build a dynamic interactive single-page
+front end UI for the HTTP-based API exposed by this server.</p>
+
+<p>Imagine that you are building a file browser for a remote server hosting some
+source code and text files. The server provides an API that allows you to list
+all the files and filter the file names by a provided prefix.</p>
+
+<h3>API</h3>
+
+<table>
+  <tr><td class="header">URL</td><td>/search</td></tr>
+  <tr><td class="header">Method</td><td>GET</td></tr>
+  <tr>
+    <td class="header">Query Params</td>
+    <td>
+      <code>prefix: string = ''</code><br/>
+      <code>count: integer = 10</code><br/>
+      <code>randomDelay: boolean = false</code><br/>
+    </td>
+  </tr>
+  <tr>
+    <td class="header">Response</td>
+    <td>
+      <code>{ "results": ["foobar/a.txt", "b.txt", "m.json", ...] }</code>
+    </td>
+  </tr>
+  <tr>
+    <td class="header">Example</td>
+    <td><a href="/search?count=7&prefix=cookie&randomDelay=false">/search?count=7&prefix=cookie&randomDelay=false</a></td>
+  </tr>
+</table>
+
+<h3>Requirements</h3>
+
+<p>
+  You may use any JavaScript frameworks to accomplish the following goals, in
+  order or priority.
+</p>
+
+<ol>
+  <li>
+    Create a text input that when its <code>onChange</code> event fires,
+    searches for files using the API with <code>value</code> as <code>prefix</code>.
+    The results should be displayed below the input in an appropriate fashion.
+  </li>
+  <li>
+    Create a loading spinner that shows up after the text input has changed but
+    before the results are returned from the API. Test this part with
+    <code>randomDelay=true</code>
+    which will cause the API to wait a random interval between 0 to 3 seconds
+    before returning the results.
+  </li>
+  <li>
+    Create a numeric input of any suitable kind that allows the user to pick
+    the number of suggestions they want to see at a given time. Use that value
+    when querying the API by including the <code>count</code> query param.
+  </li>
+  <li>
+    Allow the user to use the keyboard up and down arrows to highlight one of
+    the current search results, while still allowing the user to type in the text
+    input.
+  </li>
+  <li>
+    While a file is highlighted, allow the user to press enter to display the
+    content of the file in a seperate area of the UI on the same screen. Every
+    file returned by the search can be downloaded at <code>/static/[filename]</code>.
+    For example, if the result is <code>"accepts/README.md"</code>, then the URL
+    is <a href="/static/accepts/README.md">/static/accepts/README.md</a>.
+  </li>
+</ol>
+
+<p>
+  Try to complete as many of the tasks above as you can in the allocated time,
+  but please prioritize code design and correctness over quantity.
+</p>
+
+</div>
+
+</body>
+
+</html>
