@@ -1,7 +1,7 @@
 {
-  "name": "directory-search",
+  "name": "file-browser",
   "version": "1.0.0",
-  "description": "Server for the Directory Search interview problem",
+  "description": "Server for the File Browser interview problem",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js"
