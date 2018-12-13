@@ -26,7 +26,7 @@ async function getFilenamesAsync(dirPath) {
 }
 
 async function getAllFilenamesAsync() {
-  const basePath = path.join(path.dirname(__filename), '/node_modules');
+  const basePath = path.join(__dirname, '/node_modules');
   const files = await getFilenamesAsync(basePath);
   return files.map(f => path.relative(basePath, f));
 }
@@ -42,9 +42,10 @@ async function main() {
   app.use(cors());
   app.use(logger);
 
-  app.use('/node_modules', express.static('node_modules'));
+  app.use('/static', express.static('node_modules'));
+
   app.get('/search', async function(req, res) {
-    const { randomDelay } = req.query;
+    const randomDelay = !!JSON.parse(req.query.randomDelay || 'false');
     const prefix = req.query.prefix || '';
     const count = parseInt(req.query.count, 10) || 10;
     const results = files.filter(f => f.startsWith(prefix));
@@ -54,6 +55,10 @@ async function main() {
     }
 
     res.send({ results: results.slice(0, count) });
+  });
+
+  app.use('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
   });
 
   console.log('Server started on port', PORT);
