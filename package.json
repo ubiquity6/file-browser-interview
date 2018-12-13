@@ -1,0 +1,17 @@
+{
+  "name": "directory-search",
+  "version": "1.0.0",
+  "description": "Server for the Directory Search interview problem",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "Raven Jiang",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  }
+}
