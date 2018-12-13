@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const util = require('util');
 
-const PORT = process.env.NODE_ENV === 'production' ? 80 : 8080;
+const PORT = 8081;
 
 const readDirAsync = util.promisify(fs.readdir);
 const setTimeoutAsync = util.promisify(setTimeout);
